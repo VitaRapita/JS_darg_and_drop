@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <head>
+        <title>HTML Drag and Drop</title>
+    </head>
+    <body>
+    	<p>Drag and Drop</p>
+        <style>
+            li {
+                width: 200px;
+                cursor: move;
+                margin: 1px;
+                padding: 5px 20px;
+                font-size: 20px;
+                background-color: #ccc;
+            }
+        </style>
+            <div>
+                <ul id="box" ondrop="move(event)" ondragover="sort(event)">
+                    <li id="list" draggable="true" ondragstart="dragStart(event)" > Зелений1</li>
+                    <li id="list" draggable="true" ondragstart="dragStart(event)"> Червоний2</li>
+                    <li id="list" draggable="true" ondragstart="dragStart(event)"> Синій3</li>
+                    <li id="list" draggable="true" ondragstart="dragStart(event)"> Жовтий4</li>
+                    <li id="list" draggable="true" ondragstart="dragStart(event)"> Фіолетовий5</li> 
+                </ul>
+            </div>    
+                
+        <script>
+           function dragStart(event){
+            event.dataTransfer.setData("text/plain", event.target.id);
+           }
+           function sort(event){
+            event.preventDefault();
+           }
+           function move(event){
+            event.preventDefault();
+            var id = event.dataTransfer.getData("text/plain");
+            var li = document.getElementById(id);
+            document.getElementById(id);
+            document.getElementById('box').appendChild(li);            
+           }
+        </script> 
+              
+    </body>
+</html>
